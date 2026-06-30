@@ -4,7 +4,7 @@ On-device wake-word detection for **aarch64 Linux**, MIT-licensed runtime, AES-2
 
 Companion to [`voxrt-wake-word-android`](https://github.com/VoxRT/voxrt-wake-word-android) and [`voxrt-wake-word-ios`](https://github.com/VoxRT/voxrt-wake-word-ios). Same `.vxrt` model file works on every platform.
 
-**Version:** `v0.1.0`
+**Version:** `v0.1.1`
 **Model SHA-256:** `9d40bdc132a2ad8e85bd8a28bb49b77c51a7c62f60567222a037e44418510e8f`
 
 ## Hardware coverage
@@ -91,7 +91,7 @@ See [`bindings/go/README.md`](bindings/go/README.md).
 
 ### C / C++
 
-Download `voxrt-wake-word-0.1.0-aarch64-linux-gnu.tar.gz` from the [latest GitHub Release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/latest).
+Download `voxrt-wake-word-0.1.1-aarch64-linux-gnu.tar.gz` from the [latest GitHub Release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/latest).
 
 ```c
 #include <voxrt_wake_word.h>
