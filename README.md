@@ -2,6 +2,7 @@
 
 Always-on wake-phrase detection on the **VoxRT** custom on-device inference runtime. ~48K-parameter depthwise-separable convnet, 16 kHz mono in, sigmoid-score out + threshold-crossing events. Detects the phrase **"Hey Assistant"**.
 
+- **Status: production-ready for aarch64 Linux.** All five language channels verified end-to-end on a live microphone using the official registries (PyPI / npm / `go get` / GitHub Release tarball) — see the [Examples](#examples) section for the tested quickstarts.
 - Current version: `v0.1.5`
 - Target platform: `aarch64` Linux (Raspberry Pi 3 / 4 / 5 / Zero 2, NVIDIA Jetson, AWS Graviton, Rock Pi / Orange Pi / other aarch64 SBCs)
 - glibc baseline: 2.17 (manylinux2014_aarch64 — Pi OS Bullseye/Bookworm, Jetson L4T 32.x/35.x/36.x, Ubuntu 18.04+, Debian 10+, RHEL 7+, AWS Graviton)
