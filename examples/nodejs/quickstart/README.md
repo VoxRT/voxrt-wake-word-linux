@@ -56,6 +56,46 @@ WebSocket protocol, etc.) and feed `Int16Array` chunks to
 `engine.pushPcmI16(...)`. The streaming API is identical to the file
 loop here — just swap `wave` reading for your audio source.
 
+**Zero-native-dep alternative on Linux** — spawn `arecord` directly.
+No node-gyp, no PortAudio build, works on any distro that ships
+`alsa-utils` (Pi OS, Ubuntu, Debian, Fedora, Arch, …). Feed the raw
+stdout in fixed 512-sample chunks:
+
+```js
+const { spawn } = require("child_process");
+const { WakeWordEngine } = require("@voxrt/wake-word");
+
+const CHUNK_FRAMES = 512;
+const CHUNK_BYTES  = CHUNK_FRAMES * 2;
+
+const engine = WakeWordEngine.fromPath("voxrt_wake_word.vxrt");
+engine.threshold = 0.9;
+
+const arecord = spawn("arecord", [
+  "-D", "plughw:0,0", "-f", "S16_LE", "-r", "16000",
+  "-c", "1", "-t", "raw", "-q",
+], { stdio: ["ignore", "pipe", "inherit"] });
+
+const pcm    = new Int16Array(CHUNK_FRAMES);
+const pcmBuf = Buffer.from(pcm.buffer, pcm.byteOffset, CHUNK_BYTES);
+let leftover = Buffer.alloc(0);
+
+arecord.stdout.on("data", buf => {
+  const total = Buffer.concat([leftover, buf]);
+  const whole = total.length - (total.length % CHUNK_BYTES);
+  for (let off = 0; off < whole; off += CHUNK_BYTES) {
+    total.copy(pcmBuf, 0, off, off + CHUNK_BYTES);
+    for (const d of engine.pushPcmI16(pcm))
+      console.log(`wake! t=${d.timestampSec.toFixed(3)}s`
+                + ` score=${d.score.toFixed(4)}`);
+  }
+  leftover = total.subarray(whole);
+});
+```
+
+Same detection schema as the file loop above; on a Pi Zero 2 W this
+sustains ~5 % of one A53 core.
+
 ## What this teaches
 
 - `WakeWordEngine.fromPath` / `WakeWordEngine.fromBytes` — two

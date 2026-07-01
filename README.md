@@ -173,7 +173,8 @@ Every language ships an equivalent end-to-end example under [`examples/`](exampl
 | Language | Example | What it does |
 |---|---|---|
 | C | [examples/c/alsa-mic-quickstart](examples/c/alsa-mic-quickstart) | Live ALSA microphone → wake-word events. Build with `make`, run against `plughw:0`. |
-| C++ | [examples/c/cmake-consumer](examples/c/cmake-consumer) | Skeleton CMake project consuming the SDK via `find_package(VoxRTWakeWord ...)`. Copy-paste into a real project. |
+| C++ | [examples/c/alsa-mic-quickstart-cpp](examples/c/alsa-mic-quickstart-cpp) | Same live-mic demo in idiomatic C++17: RAII wrappers over `voxrt_wake_word_t*` + `snd_pcm_t*`, `std::atomic` Ctrl-C, exception-based errors. Same C ABI under the hood. |
+| C++ / CMake | [examples/c/cmake-consumer](examples/c/cmake-consumer) | Skeleton CMake project consuming the SDK via `find_package(VoxRTWakeWord ...)`. Copy-paste into a real project. |
 | Python | [examples/python/quickstart](examples/python/quickstart) | Walk a 16 kHz WAV file in 32 ms chunks, print detections + RTF. Pure stdlib (`wave` + `struct`). |
 | Node.js | [examples/nodejs/quickstart](examples/nodejs/quickstart) | Same shape, JavaScript. Manual WAV header parse via `fs` + `Buffer`, no npm deps. |
 | Go | [examples/go/quickstart](examples/go/quickstart) | Same shape, Go. `encoding/binary` for the WAV header. cgo picks up the bundled `.so` via `${SRCDIR}` rpath. |

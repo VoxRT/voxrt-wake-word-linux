@@ -50,13 +50,23 @@ VoxRT wake-word — quickstart
 
 ## Live microphone
 
-For real-time streaming, install `sounddevice`:
+For real-time streaming, install `sounddevice` (plus `numpy` — its
+callback mode requires it) and the PortAudio system library:
 
 ```sh
-python3 -m pip install sounddevice
+# Debian / Ubuntu / Raspberry Pi OS
+sudo apt install libportaudio2
+
+# In your virtualenv:
+python3 -m pip install sounddevice numpy
 ```
 
-then in your code:
+Debian 13 (trixie) and Ubuntu 24.04+ enforce PEP 668, so
+`pip install` outside a venv errors with
+`externally-managed-environment`. Create one with
+`python3 -m venv .venv && source .venv/bin/activate`.
+
+Then in your code:
 
 ```python
 import sounddevice as sd
