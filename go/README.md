@@ -3,7 +3,7 @@
 Go module: <https://pkg.go.dev/github.com/VoxRT/voxrt-wake-word-linux/go>
 
 ```sh
-go get github.com/VoxRT/voxrt-wake-word-linux/go@v0.1.4
+go get github.com/VoxRT/voxrt-wake-word-linux/go@v0.1.5
 ```
 
 ```go
@@ -41,7 +41,7 @@ the consumer machine.
 **Platform:** `aarch64-unknown-linux-gnu` only in v0.1 (see umbrella
 README for the hardware coverage matrix).
 
-**Version:** `v0.1.4`
+**Version:** `v0.1.5`
 **Model SHA-256:** `<see-releases-page>` (download separately from
 [voxrt-wake-word-models](https://github.com/VoxRT/voxrt-wake-word-models)).
 

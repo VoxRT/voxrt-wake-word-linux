@@ -20,8 +20,8 @@ To pin a specific SDK version's wheel from a GitHub Release (useful
 for reproducible-deploy pipelines):
 
 ```sh
-curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.4/voxrt_wake_word-0.1.4-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-python3 -m pip install ./voxrt_wake_word-0.1.4-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.5/voxrt_wake_word-0.1.5-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+python3 -m pip install ./voxrt_wake_word-0.1.5-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
 ```
 
 ## Run
