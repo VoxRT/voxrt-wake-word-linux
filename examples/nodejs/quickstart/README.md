@@ -20,8 +20,8 @@ curl -LO https://github.com/VoxRT/voxrt-wake-word-models/releases/download/v0.1.
 To pin a specific SDK version's tarball from a GitHub Release:
 
 ```sh
-curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt-wake-word-0.1.3.tgz
-npm install ./voxrt-wake-word-0.1.3.tgz
+curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.4/voxrt-wake-word-0.1.4.tgz
+npm install ./voxrt-wake-word-0.1.4.tgz
 ```
 
 ## Run

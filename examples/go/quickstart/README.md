@@ -7,7 +7,7 @@ Smallest possible Go pipeline: load the `.vxrt`, walk a WAV file in
 ## Install
 
 ```sh
-go get github.com/VoxRT/voxrt-wake-word-linux/go@v0.1.3
+go get github.com/VoxRT/voxrt-wake-word-linux/go@v0.1.4
 ```
 
 The bundled native `.so` is found via cgo's `${SRCDIR}/lib/...`

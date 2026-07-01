@@ -15,7 +15,7 @@ that ships with the wake-word crate.
 - The `voxrt-wake-word` C tarball extracted somewhere — `/usr/local`
   is the easy default, but any prefix works:
   ```sh
-  curl -L https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt-wake-word-0.1.3-aarch64-linux-gnu.tar.gz \
+  curl -L https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.4/voxrt-wake-word-0.1.4-aarch64-linux-gnu.tar.gz \
       | sudo tar -xz -C /usr/local --strip-components=1
   sudo ldconfig
   ```
