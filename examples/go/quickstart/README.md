@@ -7,13 +7,19 @@ Smallest possible Go pipeline: load the `.vxrt`, walk a WAV file in
 ## Install
 
 ```sh
-go get github.com/VoxRT/voxrt-wake-word-linux/go
+go get github.com/VoxRT/voxrt-wake-word-linux/go@v0.1.2
 ```
 
 The bundled native `.so` is found via cgo's `${SRCDIR}/lib/...`
 rpath — no `LD_LIBRARY_PATH`, no system install. Toolchain
 requirement: Go ≥ 1.21 with cgo enabled (the default; the
 `CGO_ENABLED=0` build tag will not work).
+
+Get the wake-phrase model:
+
+```sh
+curl -LO https://github.com/VoxRT/voxrt-wake-word-models/releases/download/v0.1.0/voxrt_wake_word.vxrt
+```
 
 ## Run
 

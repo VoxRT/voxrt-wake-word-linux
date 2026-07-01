@@ -168,7 +168,19 @@ for chunk in mic_iter():                # int16 mono @ 16 kHz, any chunk size
         print(f"wake! t={d.timestamp_sec:.3f}s score={d.score:.4f}")
 ```
 
-For Node.js / Go / C see the `examples/` tree at the repository root — each language has a WAV-file quickstart with pure-stdlib WAV parsing. The C example additionally has an ALSA live-microphone version.
+Every language ships an equivalent end-to-end example under [`examples/`](examples/). All quickstarts use only stdlib WAV parsing — no numpy / sounddevice / go-audio dependency.
+
+## Examples
+
+| Language | Example | What it does |
+|---|---|---|
+| C | [examples/c/alsa-mic-quickstart](examples/c/alsa-mic-quickstart) | Live ALSA microphone → wake-word events. Build with `make`, run against `plughw:0`. |
+| C++ | [examples/c/cmake-consumer](examples/c/cmake-consumer) | Skeleton CMake project consuming the SDK via `find_package(VoxRTWakeWord ...)`. Copy-paste into a real project. |
+| Python | [examples/python/quickstart](examples/python/quickstart) | Walk a 16 kHz WAV file in 32 ms chunks, print detections + RTF. Pure stdlib (`wave` + `struct`). |
+| Node.js | [examples/nodejs/quickstart](examples/nodejs/quickstart) | Same shape, JavaScript. Manual WAV header parse via `fs` + `Buffer`, no npm deps. |
+| Go | [examples/go/quickstart](examples/go/quickstart) | Same shape, Go. `encoding/binary` for the WAV header. cgo picks up the bundled `.so` via `${SRCDIR}` rpath. |
+
+The C examples additionally ship with a live-microphone version; language quickstarts document the microphone-streaming pattern in each README (via `sounddevice` for Python, `naudiodon` / `portaudio` for Node, `portaudio` / `goalsa` for Go).
 
 ## Tuning
 

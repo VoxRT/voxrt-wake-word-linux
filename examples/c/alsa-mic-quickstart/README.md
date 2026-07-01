@@ -15,12 +15,14 @@ that ships with the wake-word crate.
 - The `voxrt-wake-word` C tarball extracted somewhere — `/usr/local`
   is the easy default, but any prefix works:
   ```sh
-  curl -L https://github.com/VoxRT/voxrt-wake-word-linux/releases/latest/download/voxrt-wake-word-<ver>-aarch64-linux-gnu.tar.gz \
+  curl -L https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.2/voxrt-wake-word-0.1.2-aarch64-linux-gnu.tar.gz \
       | sudo tar -xz -C /usr/local --strip-components=1
   sudo ldconfig
   ```
-- The `voxrt_wake_word.vxrt` model file from
-  <https://github.com/VoxRT/voxrt-wake-word-models/releases>.
+- The `voxrt_wake_word.vxrt` model file:
+  ```sh
+  curl -LO https://github.com/VoxRT/voxrt-wake-word-models/releases/download/v0.1.0/voxrt_wake_word.vxrt
+  ```
 
 ## Build
 
