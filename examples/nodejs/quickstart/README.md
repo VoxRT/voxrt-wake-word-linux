@@ -11,18 +11,17 @@ no `wavefile` / `node-wav` / `mic` dependency, just `fs` and the
 npm install @voxrt/wake-word
 ```
 
-(Not yet on npm as of v0.1.3 — for now download the tarball from
-[this release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/tag/v0.1.3):)
-
-```sh
-curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt-wake-word-0.1.3.tgz
-npm install ./voxrt-wake-word-0.1.3.tgz
-```
-
 Get the wake-phrase model:
 
 ```sh
 curl -LO https://github.com/VoxRT/voxrt-wake-word-models/releases/download/v0.1.0/voxrt_wake_word.vxrt
+```
+
+To pin a specific SDK version's tarball from a GitHub Release:
+
+```sh
+curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt-wake-word-0.1.3.tgz
+npm install ./voxrt-wake-word-0.1.3.tgz
 ```
 
 ## Run

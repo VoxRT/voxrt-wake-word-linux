@@ -84,21 +84,19 @@ Net effect on a shipped app: **roughly 600 KB** once the runtime `.so` + `.vxrt`
 
 ### Python
 
-Until the public PyPI publish (planned once this repo goes public), install the wheel from the [latest GitHub Release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/latest):
-
 ```sh
-curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt_wake_word-0.1.3-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-python3 -m pip install ./voxrt_wake_word-0.1.3-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+pip install voxrt-wake-word
 ```
+
+One `abi3` wheel covers Python 3.9 / 3.10 / 3.11 / 3.12 / 3.13. Or pin a specific version's wheel from a [GitHub Release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/tag/v0.1.3) if your deploy pipeline prefers offline installs.
 
 ### Node.js
 
-Until the public npm publish, install from the same GitHub Release:
-
 ```sh
-curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt-wake-word-0.1.3.tgz
-npm install ./voxrt-wake-word-0.1.3.tgz
+npm install @voxrt/wake-word
 ```
+
+TypeScript definitions ship with the package. Or pin a specific version's tarball from a [GitHub Release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/tag/v0.1.3) — same `.tgz`, offline-installable via `npm install ./…`.
 
 ### Go
 
