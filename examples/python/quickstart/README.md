@@ -10,12 +10,12 @@ in 32 ms chunks, print every wake-word detection. Pure stdlib — no
 python3 -m pip install voxrt-wake-word
 ```
 
-(Not yet on PyPI as of v0.1.2 — for now download the wheel from
-[this release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/tag/v0.1.2):)
+(Not yet on PyPI as of v0.1.3 — for now download the wheel from
+[this release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/tag/v0.1.3):)
 
 ```sh
-curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.2/voxrt_wake_word-0.1.2-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-python3 -m pip install ./voxrt_wake_word-0.1.2-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt_wake_word-0.1.3-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+python3 -m pip install ./voxrt_wake_word-0.1.3-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
 ```
 
 Get the wake-phrase model:

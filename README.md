@@ -2,7 +2,7 @@
 
 Always-on wake-phrase detection on the **VoxRT** custom on-device inference runtime. ~48K-parameter depthwise-separable convnet, 16 kHz mono in, sigmoid-score out + threshold-crossing events. Detects the phrase **"Hey Assistant"**.
 
-- Current version: `v0.1.2`
+- Current version: `v0.1.3`
 - Target platform: `aarch64` Linux (Raspberry Pi 3 / 4 / 5 / Zero 2, NVIDIA Jetson, AWS Graviton, Rock Pi / Orange Pi / other aarch64 SBCs)
 - glibc baseline: 2.17 (manylinux2014_aarch64 — Pi OS Bullseye/Bookworm, Jetson L4T 32.x/35.x/36.x, Ubuntu 18.04+, Debian 10+, RHEL 7+, AWS Graviton)
 - Languages shipped: **Python** (PyPI wheel), **Node.js** (npm), **Go** (`go get`), **C / C++** (tarball + CMake + pkg-config), **Rust** (git dependency)
@@ -72,9 +72,9 @@ Full sourced analysis at [voxrt.com](https://voxrt.com).
 
 ## Binary footprint
 
-- **C tarball** (`voxrt-wake-word-0.1.2-aarch64-linux-gnu.tar.gz`): ~264 KB compressed. Contains `libvoxrt_wake_word.so` (~480 KB stripped), `voxrt_wake_word.h`, pkg-config + CMake configs, examples/, LICENSE × 2, README.
+- **C tarball** (`voxrt-wake-word-0.1.3-aarch64-linux-gnu.tar.gz`): ~264 KB compressed. Contains `libvoxrt_wake_word.so` (~480 KB stripped), `voxrt_wake_word.h`, pkg-config + CMake configs, examples/, LICENSE × 2, README.
 - **PyPI wheel** (`voxrt_wake_word-...-cp39-abi3-manylinux_2_17_aarch64.whl`): ~280 KB compressed. One wheel covers Python 3.9 / 3.10 / 3.11 / 3.12 / 3.13 via the pyo3 stable-ABI bridge.
-- **npm package** (`voxrt-wake-word-0.1.2.tgz`, imports as `@voxrt/wake-word`): ~264 KB compressed. Contains `voxrt-wake-word.linux-arm64-gnu.node` (~480 KB) + `index.js` + `index.d.ts`.
+- **npm package** (`voxrt-wake-word-0.1.3.tgz`, imports as `@voxrt/wake-word`): ~264 KB compressed. Contains `voxrt-wake-word.linux-arm64-gnu.node` (~480 KB) + `index.js` + `index.d.ts`.
 - **Go module** (in-repo at `go/`): ~480 KB bundled `.so` + ~5 KB Go source. Fetched by `go get github.com/VoxRT/voxrt-wake-word-linux/go`.
 - **Wake-phrase model** `voxrt_wake_word.vxrt` (downloaded separately from [voxrt-wake-word-models](https://github.com/VoxRT/voxrt-wake-word-models)): ~100 KB fp16.
 
@@ -87,8 +87,8 @@ Net effect on a shipped app: **roughly 600 KB** once the runtime `.so` + `.vxrt`
 Until the public PyPI publish (planned once this repo goes public), install the wheel from the [latest GitHub Release](https://github.com/VoxRT/voxrt-wake-word-linux/releases/latest):
 
 ```sh
-curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.2/voxrt_wake_word-0.1.2-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-python3 -m pip install ./voxrt_wake_word-0.1.2-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt_wake_word-0.1.3-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+python3 -m pip install ./voxrt_wake_word-0.1.3-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
 ```
 
 ### Node.js
@@ -96,14 +96,14 @@ python3 -m pip install ./voxrt_wake_word-0.1.2-cp39-abi3-manylinux_2_17_aarch64.
 Until the public npm publish, install from the same GitHub Release:
 
 ```sh
-curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.2/voxrt-wake-word-0.1.2.tgz
-npm install ./voxrt-wake-word-0.1.2.tgz
+curl -LO https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt-wake-word-0.1.3.tgz
+npm install ./voxrt-wake-word-0.1.3.tgz
 ```
 
 ### Go
 
 ```sh
-go get github.com/VoxRT/voxrt-wake-word-linux/go@v0.1.2
+go get github.com/VoxRT/voxrt-wake-word-linux/go@v0.1.3
 ```
 
 The `go/` subdirectory of this repository IS the Go module — no separate publish step. cgo picks up the bundled `.so` via `${SRCDIR}`-relative rpath at build time; no `LD_LIBRARY_PATH` or system install required.
@@ -111,7 +111,7 @@ The `go/` subdirectory of this repository IS the Go module — no separate publi
 ### C / C++
 
 ```sh
-curl -L https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.2/voxrt-wake-word-0.1.2-aarch64-linux-gnu.tar.gz \
+curl -L https://github.com/VoxRT/voxrt-wake-word-linux/releases/download/v0.1.3/voxrt-wake-word-0.1.3-aarch64-linux-gnu.tar.gz \
     | sudo tar -xz -C /usr/local --strip-components=1
 sudo ldconfig
 ```
@@ -125,7 +125,7 @@ gcc main.c $(pkg-config --cflags --libs voxrt-wake-word) -o my_app
 Or in CMake:
 
 ```cmake
-find_package(VoxRTWakeWord 0.1.2 REQUIRED)
+find_package(VoxRTWakeWord 0.1.3 REQUIRED)
 target_link_libraries(my_app PRIVATE VoxRT::WakeWord)
 ```
 
@@ -135,7 +135,7 @@ Until the crates.io decision is finalised (see [`docs/wake-word/12-linux-sdk-pac
 
 ```toml
 [dependencies]
-voxrt-wake-word = { git = "https://github.com/VoxRT/voxrt-wake-word-linux", tag = "v0.1.2" }
+voxrt-wake-word = { git = "https://github.com/VoxRT/voxrt-wake-word-linux", tag = "v0.1.3" }
 ```
 
 ## Get the wake-phrase model
