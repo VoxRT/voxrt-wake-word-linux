@@ -54,6 +54,16 @@ The Pi Zero 2 W row is a direct measurement (RTF 0.053 sustained across a 60-sec
 
 At RTF ≈ 0.05 on the smallest Pi, the wake-word is **~19× faster than realtime** with 95 % of one core free for the rest of your app. Even on the LITTLE-cluster range, the ~5 % CPU budget survives thermal throttling gracefully.
 
+### NEON vs scalar
+
+The runtime ships one binary with both scalar and NEON code paths for every hot op — a runtime feature-detect selects NEON on `aarch64` and falls back to a bit-exact scalar path (kernels match each other within ULP budget as a CI gate; no "looks about right"). On the same reference device, with all thread affinity + build flags held constant, forcing the scalar path vs the default NEON path:
+
+| Device | Scalar RTF | NEON RTF | Speedup |
+|---|---|---|---|
+| Snapdragon 662, Cortex-A73 pinned (HIGH_PERF affinity) | 0.182 | **0.021** | **8.7×** |
+
+Continuous 60-second live-mic push, 512-sample frames at 16 kHz mono. HIGH_PERF affinity keeps the perf-cluster core clock steady across the two runs so the ratio is the NEON win alone, not scheduler noise. Numbers are the reference — cheap-tier A53 gets a similar multiplier at proportionally slower absolute RTF.
+
 ## How it compares
 
 The on-device wake-word category is dominated by Picovoice Porcupine on the paid side and openWakeWord on the OSS side:
